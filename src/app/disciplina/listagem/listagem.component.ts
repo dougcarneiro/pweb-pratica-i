@@ -19,4 +19,27 @@ export class ListagemDisciplinaComponent {
     this.DISCIPLINAS = this.DISCIPLINAS.filter(
         disciplina => disciplina.cod !== disciplinaARemover.cod);
   }
+    curtir(disciplina: Disciplina) {
+      disciplina.likes += 1;
+    }
+
+    descurtir(disciplina: Disciplina) {
+      if (disciplina.likes > 0) {
+        disciplina.likes -= 1;
+      }
+    }
+
+    avaliar(disciplina: Disciplina) {
+      disciplina.curti = !disciplina.curti;
+    }
+
+    nomeIconeCurtir(disciplina: Disciplina): string {
+      if (disciplina.curti === undefined) {
+        return 'thumbs_up_down';
+      }
+      if (disciplina.curti) {
+        return 'thumb_up';
+      }
+      return 'thumb_down';
+    }
 }
